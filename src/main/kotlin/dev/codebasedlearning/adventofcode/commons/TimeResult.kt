@@ -14,6 +14,6 @@ fun <T> timeResult(block: () -> T): Pair<Duration, T> {
 fun <T> checkResult(correct: T, block: () -> T): Triple<Duration, T, String> {
     var result: T
     val time = measureTime { result = block() }
-    val check = if (correct == result) "OK".inBrightGreen() else "(NOK - correct: $result)".inBrightRed()
+    val check = if (correct == result) "OK".inBrightGreen() else "(NOK - correct: $correct)".inBrightRed()
     return Triple(time, result, check)
 }
