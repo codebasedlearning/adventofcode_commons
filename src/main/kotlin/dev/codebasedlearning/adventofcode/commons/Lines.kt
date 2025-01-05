@@ -15,10 +15,10 @@ typealias Lines = List<String>
  */
 fun linesOf(day: Int = -1, year: Int = -1, path: String = ".", data: String? = null): Lines {
     require(day > 0 || data != null)
-    return (data?.lines() ?: fileOf(
+    return (data?.lines() ?: inputFileOf(
         day = day,
-        path = path,
-        fileName = "input.txt"
+        //path = path,
+        //fileName = "input.txt"
     ).readLines())  // use readText for the original textfile
         .dropWhile { it.isBlank() }
         .dropLastWhile { it.isBlank() }
