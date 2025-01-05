@@ -12,13 +12,14 @@ plugins {
 }
 
 group = "dev.codebasedlearning.adventofcode.commons"
-version = "0.1.5"
+version = "0.1.6" // ./gradlew publish
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
     testImplementation(kotlin("test"))
 }
 
