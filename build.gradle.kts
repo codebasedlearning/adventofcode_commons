@@ -2,7 +2,7 @@ import java.io.FileInputStream
 import java.util.Properties
 import kotlin.apply
 
-// (C) 2025 A.Voß, a.voss@fh-aachen.de, kotlin@codebasedlearning.dev
+// (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 plugins {
     kotlin("jvm") version "2.1.0" // id("org.jetbrains.kotlin.jvm")
@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "dev.codebasedlearning.adventofcode.commons"
-version = "0.1.2"
+version = "0.1.3"
 
 repositories {
     mavenCentral()
@@ -61,7 +61,7 @@ publishing {
         create<MavenPublication>("github") {
             from(components["kotlin"]) // or "kotlin" or "android"
             pom {
-                name.set("cbl_aoc_commons")
+                name.set("adventofcode_commons")
                 description.set("A library for solving Advent of Code problems.")
                 url.set("https://github.com/codebasedlearning/adventofcode_commons")
                 scm {
