@@ -1,8 +1,9 @@
+// (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+
 import java.io.FileInputStream
 import java.util.Properties
 import kotlin.apply
 
-// (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 plugins {
     kotlin("jvm") version "2.1.0" // id("org.jetbrains.kotlin.jvm")
@@ -11,7 +12,7 @@ plugins {
 }
 
 group = "dev.codebasedlearning.adventofcode.commons"
-version = "0.1.3"
+version = "0.1.4"
 
 repositories {
     mavenCentral()
