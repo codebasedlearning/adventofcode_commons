@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "dev.codebasedlearning.adventofcode.commons"
-version = "0.1.10" // ./gradlew publish
+version = "0.1.11" // ./gradlew publish
 
 repositories {
     mavenCentral()
