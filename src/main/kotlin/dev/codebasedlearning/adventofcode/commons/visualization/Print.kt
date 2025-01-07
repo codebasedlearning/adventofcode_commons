@@ -2,6 +2,8 @@
 
 package dev.codebasedlearning.adventofcode.commons.visualization
 
+import dev.codebasedlearning.adventofcode.commons.grid.Grid
+
 /**
  * Prints the elements of the list with optional indentation and description.
  *
@@ -16,4 +18,10 @@ fun <T> Iterable<T>.print(indent: Int = 0, description: String = "", take: Int =
         println("$prefix$row")
     }
     if (!skipEndl) println()
+}
+
+fun <T> Grid<T>.print(indent: Int = 0, description: String = "", separator: String =" ") {
+    if (description.isNotBlank()) { println(description) }
+    val prefix = " ".repeat(indent)
+    data.forEach { row -> println(row.joinToString(separator, prefix = prefix)) }
 }

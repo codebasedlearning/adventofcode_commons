@@ -2,7 +2,6 @@
 
 package dev.codebasedlearning.adventofcode.commons.iterables
 
-
 /**
  * Performs a binary search on a sorted list to find the index of a target element.
  * The list should be sorted in ascending order for the binary search to function correctly.
@@ -48,8 +47,24 @@ fun <T> List<T>.countWhile(startIndex: Int, step: Int, value: T): Int {
     return count
 }
 
+/**
+ * Compares the contents of this sequence with the specified iterable for equality based on their elements in order.
+ * The sequence and the iterable are considered equal if they have the same number of elements and all elements in
+ * corresponding positions are equivalent.
+ *
+ * @param other The iterable to compare with this sequence.
+ * @return `true` if the sequence and the iterable have equal content, `false` otherwise.
+ */
 fun <T> Sequence<T>.contentEquals(other: Iterable<T>): Boolean = this.contentEquals(other.asSequence())
 
+/**
+ * Compares the contents of two sequences for equality based on their elements in order.
+ * The sequences are considered equal if they have the same number of elements, and all
+ * elements at corresponding positions are equivalent.
+ *
+ * @param other The sequence to compare with this sequence.
+ * @return `true` if both sequences have equal content, `false` otherwise.
+ */
 fun <T> Sequence<T>.contentEquals(other: Sequence<T>): Boolean {
     val lhs = this.iterator()
     val rhs = other.iterator()
