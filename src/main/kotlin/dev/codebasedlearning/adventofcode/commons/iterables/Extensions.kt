@@ -1,22 +1,7 @@
 // (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
-package dev.codebasedlearning.adventofcode.commons
+package dev.codebasedlearning.adventofcode.commons.iterables
 
-/**
- * Prints the elements of the list with optional indentation and description.
- *
- * @param indent The number of spaces to indent each element. Default is 0.
- * @param description A description to print before the list elements. Default is an empty string.
- * @param take The number of elements from the list to print. Default is the size of the list.
- */
-fun <T> List<T>.print(indent: Int = 0, description: String = "", take: Int = this.size, skipEndl: Boolean = false) {
-    if (description.isNotBlank()) { println(description) }
-    val prefix = " ".repeat(indent)
-    this.take(take).forEach { row ->
-        println("$prefix$row")
-    }
-    if (!skipEndl) println()
-}
 
 /**
  * Performs a binary search on a sorted list to find the index of a target element.
@@ -61,4 +46,17 @@ fun <T> List<T>.countWhile(startIndex: Int, step: Int, value: T): Int {
         index += step
     }
     return count
+}
+
+fun <T> Sequence<T>.contentEquals(other: Iterable<T>): Boolean = this.contentEquals(other.asSequence())
+
+fun <T> Sequence<T>.contentEquals(other: Sequence<T>): Boolean {
+    val lhs = this.iterator()
+    val rhs = other.iterator()
+
+    // or with zip, but we need to check the end, so this is the shortest (imho)
+    while (lhs.hasNext() && rhs.hasNext()) {
+        if (lhs.next() != rhs.next()) return false
+    }
+    return !lhs.hasNext() && !rhs.hasNext()
 }

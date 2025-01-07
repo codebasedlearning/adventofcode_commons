@@ -1,4 +1,4 @@
-package dev.codebasedlearning.adventofcode.commons
+package dev.codebasedlearning.adventofcode.commons.graph
 
 // (C) 2024 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 

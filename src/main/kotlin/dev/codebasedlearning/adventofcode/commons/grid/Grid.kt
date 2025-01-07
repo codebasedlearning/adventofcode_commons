@@ -1,7 +1,9 @@
 // (C) 2024 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
-package dev.codebasedlearning.adventofcode.commons
+package dev.codebasedlearning.adventofcode.commons.grid
 
+import dev.codebasedlearning.adventofcode.commons.graph.Graph
+import dev.codebasedlearning.adventofcode.commons.input.Lines
 import kotlin.math.abs
 import kotlin.sequences.map
 

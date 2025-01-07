@@ -1,6 +1,6 @@
 // (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
-package dev.codebasedlearning.adventofcode.commons
+package dev.codebasedlearning.adventofcode.commons.input
 
 
 /**
