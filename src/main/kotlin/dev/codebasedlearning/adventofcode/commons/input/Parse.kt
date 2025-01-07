@@ -2,7 +2,6 @@
 
 package dev.codebasedlearning.adventofcode.commons.input
 
-
 /**
  * Extracts numbers from the receiver string using a specified delimiter. The input string
  * is first trimmed of any leading or trailing whitespace. It is then split into parts based

@@ -1,1 +1,3 @@
-# adventofcode_common_kotlin
+# adventofcode_commons
+
+A helping library.

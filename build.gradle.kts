@@ -1,10 +1,5 @@
 // (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
-import java.io.FileInputStream
-import java.util.Properties
-import kotlin.apply
-
-
 plugins {
     kotlin("jvm") version "2.1.0" // id("org.jetbrains.kotlin.jvm")
     id("maven-publish")
@@ -12,7 +7,7 @@ plugins {
 }
 
 group = "dev.codebasedlearning.adventofcode.commons"
-version = "0.2.3" // ./gradlew publish
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -31,22 +26,14 @@ tasks.jar {
     manifest {
         attributes["Implementation-Title"] = "CodeBasedLearning AdventOfCode Commons"
         attributes["Implementation-Version"] = version
-        //attributes["Main-Class"] = "com.codebasedlearning.aoc.MainKt" // Adjust this to your main class, if needed
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
 }
 
-// Load custom properties file
-//val localProperties = Properties().apply {
-//    val file = file("local.properties") // Replace with your file name if different
-//    if (file.exists()) {
-//        load(FileInputStream(file))
-//    }
-//}
-val githubActor: String? = System.getenv("GITHUB_CBL_ACTOR") // ?: "-"
-val githubToken: String? = System.getenv("GITHUB_CBL_TOKEN") // ?: "-"
-//println("github_actor: $github_actor !!! github_token: $github_token")
+val githubActor: String? = System.getenv("GITHUB_CBL_ACTOR")
+val githubToken: String? = System.getenv("GITHUB_CBL_TOKEN")
+
 publishing {
     repositories {
         maven {
@@ -61,7 +48,7 @@ publishing {
 
     publications {
         create<MavenPublication>("github") {
-            from(components["kotlin"]) // or "kotlin" or "android"
+            from(components["kotlin"])
             pom {
                 name.set("adventofcode_commons")
                 description.set("A library for solving Advent of Code problems.")
@@ -75,4 +62,3 @@ publishing {
         }
     }
 }
-
