@@ -17,7 +17,7 @@ package dev.codebasedlearning.adventofcode.commons.geometry
  */
 data class Position(val row: Int, val col: Int): AStep {
     override val asPos: Position get() = this
-    override val asDir: Direction get() = Direction(0, 0)
+    override val asDir: Direction get() = Direction(row, col)
 
     override fun toString() = "($row|$col)"
 }

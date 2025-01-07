@@ -32,8 +32,8 @@ class PositionTest {
     @Test
     fun `test asDir returns default direction`() {
         val position = Position(2, 8)
-        val expectedDirection = Direction(0, 0)
-        assertEquals(expectedDirection, position.asDir, "asDir should return a default direction (0, 0)")
+        val expectedDirection = Direction(2, 8)
+        assertEquals(expectedDirection, position.asDir, "asDir should return the position")
     }
 
     @Test
