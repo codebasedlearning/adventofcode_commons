@@ -47,6 +47,18 @@ fun <T> List<T>.countWhile(startIndex: Int, step: Int, value: T): Int {
     return count
 }
 
+fun <R> countWhile(predicate: ()-> Boolean, block: () -> R): Long {
+    var count = 0L
+    while (predicate()) { count++; block() }
+    return count
+}
+
+fun <T> repeat(input: Iterable<T>): Sequence<T> = sequence {
+    while (true) { yieldAll(input) }
+}
+
+fun repeat(input: String) = repeat(input.asIterable())
+
 /**
  * Compares the contents of this sequence with the specified iterable for equality based on their elements in order.
  * The sequence and the iterable are considered equal if they have the same number of elements and all elements in
@@ -74,4 +86,17 @@ fun <T> Sequence<T>.contentEquals(other: Sequence<T>): Boolean {
         if (lhs.next() != rhs.next()) return false
     }
     return !lhs.hasNext() && !rhs.hasNext()
+}
+
+/**
+ * Transfers all elements from this mutable collection to the specified target mutable collection.
+ * The target collection is cleared before adding elements from this collection.
+ * After the transfer, this collection is also cleared.
+ *
+ * @param target The mutable collection to which the elements of this collection are transferred.
+ */
+fun <T> MutableCollection<T>.shiftTo(target: MutableCollection<T>) {
+    target.clear()
+    target.addAll(this)
+    this.clear()
 }
