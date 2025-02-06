@@ -24,13 +24,13 @@ operator fun Long.times(other: Direction) = other * this
 operator fun Direction.plus(other: Direction) = Position(dRow+other.dRow, dCol+other.dCol)
 operator fun Direction.unaryMinus() = -1 * this
 
-// ex visit, infinite
+// glide represents more the idea of an infinite window
 fun Position.glide(dir: Direction) = sequence {
     var pos = this@glide
     while (true) { yield(pos); pos += dir }
 }
 
-// only in steps
+// using walk means to get a step, i.e. a position and a direction, or, with a grid, also the grid value
 fun Position.walk(seq: Sequence<Direction>) = sequence {
     yieldAll(seq.map { Step(pos=this@walk + it, dir=it) })
 }
@@ -38,33 +38,8 @@ fun Position.walk(seq: Sequence<Direction>) = sequence {
 // often used
 fun Position.walkCardinals() = walk(Direction.Cardinals)
 
-//fun Position.visit(step: Direction) = sequence {
-//    var pos = this@visit
-//    while (true) { yield(pos); pos += step }
-//}
-//
-//fun Position.visit(seq: Sequence<Direction>) = sequence {
-//    yieldAll(seq.map { this@visit + it })
-//}
-//
-//fun Position.walk(step: Direction) = sequence {
-//    var pos = this@walk
-//    while (true) { yield(Step(pos=pos, dir=step)); pos += step }
-//}
-
-//fun Position.walk(seq: Sequence<Direction>) = sequence {
-//    yieldAll(seq.map { Step(pos=this@walk + it, dir=it) })
-//}
-
 fun Position.manhattanDistance(other: Position) = abs(this.row - other.row) + abs(this.col - other.col)
 val Position.norm1 get() = abs(row) + abs(col) // |x-0|
+
 fun Direction.manhattanDistance(other: Direction) = this.asPos.manhattanDistance(other.asPos)
 val Direction.norm1 get() = this.asPos.norm1
-
-//fun Int.toDirectionSquare() = sequence {
-//    for (dr in -this@toDirectionSquare..this@toDirectionSquare) {
-//        for (dc in -this@toDirectionSquare..this@toDirectionSquare) {
-//            yield(Direction(dr, dc))
-//        }
-//    }
-//}

@@ -2,8 +2,16 @@
 
 package dev.codebasedlearning.adventofcode.commons.grid
 
+import dev.codebasedlearning.adventofcode.commons.geometry.AStep
+import dev.codebasedlearning.adventofcode.commons.geometry.Direction
 import dev.codebasedlearning.adventofcode.commons.geometry.Position
 import kotlin.sequences.map
+
+data class PositionedValue<T>(val pos: Position, val value: T): AStep {
+    override fun toString() = "(${pos.row}|${pos.col} '$value')"
+    override val asPos: Position get() = pos
+    override val asDir: Direction get() = pos.asDir
+}
 
 /**
  * Represents a two-dimensional grid of elements of type T. The grid provides
@@ -34,6 +42,8 @@ class Grid<T>() {
     val positions get() = (0 until rows).asSequence().flatMap { row ->
         (0 until cols).asSequence().map { col -> Position(row, col) }
     }
+
+    val entries get() = positions.map { PositionedValue(it, this[it]) }
 
     constructor(rows: Int, cols: Int, block: (pos: Position) -> T) : this() {
         reset(rows, cols, block)

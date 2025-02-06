@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "dev.codebasedlearning.adventofcode.commons"
-version = "1.0.3"
+version = "2.0.1"
 
 repositories {
     mavenCentral()
